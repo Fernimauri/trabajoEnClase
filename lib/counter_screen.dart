@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
   const Counter({super.key});
-
+//Comentario de prueba
   @override
   State<Counter> createState() => _CounterState();
 }
