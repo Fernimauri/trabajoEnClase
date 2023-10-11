@@ -40,7 +40,9 @@ class _CounterState extends State<Counter> {
           FloatingActionButton(
               onPressed: () {
                 setState(() {
-                  num--;
+                  if (num >= 0) {
+                    num--;
+                  }
                 });
               },
               child: const Icon(Icons.exposure_minus_1))
