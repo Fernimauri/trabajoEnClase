@@ -7,8 +7,20 @@ class Counter extends StatefulWidget {
   State<Counter> createState() => _CounterState();
 }
 
+// void SetEstado(int numAct, String clickAcy){
+//   if (numAct > 1) 
+//   {
+//     clickAcy = 'Clicks';
+//   }else 
+//   if (numAct < 2) 
+//   {
+//     clickAcy = 'Click';
+//   }
+// }
+
 class _CounterState extends State<Counter> {
-  int num = 3;
+  int num = 0;
+  String click = 'Click';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +33,7 @@ class _CounterState extends State<Counter> {
               style:
                   const TextStyle(fontSize: 100, fontWeight: FontWeight.w100),
             ),
-            const Text('CLICK',
+             Text(click,
                 style: TextStyle(fontSize: 60, fontWeight: FontWeight.w100))
           ],
         ),
@@ -33,21 +45,43 @@ class _CounterState extends State<Counter> {
               onPressed: () {
                 setState(() {
                   num++;
+                  if(num>1){
+                    click = 'Clicks';
+                  }
                 });
               },
-              child: const Icon(Icons.plus_one)),
+              child: const Icon(Icons.plus_one)
+              ),
           const SizedBox(height: 18),
           FloatingActionButton(
               onPressed: () {
                 setState(() {
-                  if (num >= 0) {
+
+                  if (num > 0) {
                     num--;
+                  }
+                  if (num < 2) {
+                    click = 'Click';
                   }
                 });
               },
-              child: const Icon(Icons.exposure_minus_1))
+              child: const Icon(Icons.exposure_minus_1)
+              ),
+              const SizedBox(height: 18),
+          FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  num = 0;
+                  click = 'Click';
+                }
+              );
+              },
+              child: const Icon(Icons.refresh_rounded)
+              )
         ],
+      
       ),
+      
     );
   }
 }
