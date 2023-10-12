@@ -1,3 +1,4 @@
+import 'package:aplicacionenclase/presentacion/components.dart';
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
@@ -8,11 +9,11 @@ class Counter extends StatefulWidget {
 }
 
 // void SetEstado(int numAct, String clickAcy){
-//   if (numAct > 1) 
+//   if (numAct > 1)
 //   {
 //     clickAcy = 'Clicks';
-//   }else 
-//   if (numAct < 2) 
+//   }else
+//   if (numAct < 2)
 //   {
 //     clickAcy = 'Click';
 //   }
@@ -24,6 +25,7 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Center(child: Text('Counter'))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,55 +35,47 @@ class _CounterState extends State<Counter> {
               style:
                   const TextStyle(fontSize: 100, fontWeight: FontWeight.w100),
             ),
-             Text(click,
-                style: TextStyle(fontSize: 60, fontWeight: FontWeight.w100))
+            Text(click,
+                style: const TextStyle(fontSize: 60, fontWeight: FontWeight.w100))
           ],
         ),
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
+          CustomButton(
+              icon: Icons.plus_one,
               onPressed: () {
                 setState(() {
                   num++;
-                  if(num>1){
-                    click = 'Clicks';
-                  }
                 });
-              },
-              child: const Icon(Icons.plus_one)
-              ),
+              }),
           const SizedBox(height: 18),
-          FloatingActionButton(
+          CustomButton(
+              icon: Icons.exposure_minus_1,
               onPressed: () {
                 setState(() {
-
                   if (num > 0) {
                     num--;
                   }
                   if (num < 2) {
                     click = 'Click';
                   }
-                });
-              },
-              child: const Icon(Icons.exposure_minus_1)
+                }
+                );
+              }
               ),
-              const SizedBox(height: 18),
-          FloatingActionButton(
+                const SizedBox(height: 18),
+               CustomButton(
+              icon: Icons.refresh_rounded,
               onPressed: () {
                 setState(() {
                   num = 0;
                   click = 'Click';
-                }
-              );
-              },
-              child: const Icon(Icons.refresh_rounded)
-              )
+                });
+              }),
         ],
-      
       ),
-      
     );
   }
 }
